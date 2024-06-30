@@ -16,7 +16,8 @@ public class Program {
 			System.out.println("(1) Cadastrar Aluno");
 			System.out.println("(2) Atualizar Aluno");
 			System.out.println("(3) Excluir Aluno");
-			System.out.println("(4) Consultar Alunos");
+			System.out.println("(4) Obter Aluno");
+			System.out.println("(5) Consultar Alunos");
 
 			System.out.print("\nInforme a opção desejada: ");
 			Integer opcao = Integer.parseInt(scanner.nextLine());
@@ -34,6 +35,9 @@ public class Program {
 				alunoController.excluirAluno();
 				break;
 			case 4:
+				alunoController.obterAluno();
+				break;
+			case 5:
 				alunoController.consultarAlunos();
 				break;
 			default:

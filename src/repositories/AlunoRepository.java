@@ -15,7 +15,7 @@ public class AlunoRepository {
 		Connection connection = ConnectionFactory.getConnection();
 
 		PreparedStatement statement = connection
-				.prepareStatement("insert into aluno(idAluno, nome, matricula, cpf) values(?, ?, ?, ?)");
+				.prepareStatement("INSERT INTO aluno(idAluno, nome, matricula, cpf) VALUES(?, ?, ?, ?)");
 
 		statement.setInt(1, aluno.getIdAluno());
 		statement.setObject(2, aluno.getNome());
@@ -23,14 +23,14 @@ public class AlunoRepository {
 		statement.setObject(4, aluno.getCpf());
 
 		statement.execute();
-		statement.close();
+		connection.close();
 	}
 
 	public void update(Aluno aluno) throws Exception {
 		Connection connection = ConnectionFactory.getConnection();
 
 		PreparedStatement statement = connection
-				.prepareStatement("update aluno set nome=?, matricula=?, cpf=? where idAluno=?");
+				.prepareStatement("UPDATE aluno SET nome=?, matricula=?, cpf=? WHERE idAluno=?");
 
 		statement.setString(1, aluno.getNome());
 		statement.setString(2, aluno.getMatricula());
@@ -44,7 +44,7 @@ public class AlunoRepository {
 	public void delete(Aluno aluno) throws Exception {
 		Connection connection = ConnectionFactory.getConnection();
 
-		PreparedStatement statement = connection.prepareStatement("delete from aluno where idAluno=?");
+		PreparedStatement statement = connection.prepareStatement("DELETE FROM aluno WHERE idAluno=?");
 
 		statement.setInt(1, aluno.getIdAluno());
 
@@ -55,7 +55,7 @@ public class AlunoRepository {
 	public List<Aluno> findAll() throws Exception {
 		Connection connection = ConnectionFactory.getConnection();
 
-		PreparedStatement statement = connection.prepareStatement("select * from Aluno order by nome");
+		PreparedStatement statement = connection.prepareStatement("SELECT idAluno, nome, matricula, cpf FROM Aluno ORDER BY nome");
 
 		ResultSet resultSet = statement.executeQuery();
 
@@ -78,7 +78,7 @@ public class AlunoRepository {
 	public Aluno findbyId(Integer idAluno) throws Exception {
 		Connection connection = ConnectionFactory.getConnection();
 
-		PreparedStatement statement = connection.prepareStatement("select * from aluno where idAluno=?");
+		PreparedStatement statement = connection.prepareStatement("SELECT idAluno, nome, matricula, cpf FROM aluno WHERE idAluno=?");
 
 		statement.setObject(1, idAluno);
 		ResultSet resultSet = statement.executeQuery();

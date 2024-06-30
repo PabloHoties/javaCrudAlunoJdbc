@@ -58,7 +58,7 @@ public class AlunoController {
 
 			alunoRepository.update(aluno);
 
-			System.out.println("\nAluno autalizado com sucesso!");
+			System.out.println("\nAluno atualizado com sucesso!");
 		} else
 			System.out.println("\nAluno não encontrado. Verifique o ID.");
 
@@ -85,6 +85,27 @@ public class AlunoController {
 		scanner.close();
 	}
 
+	public void obterAluno() throws Exception {
+
+		System.out.println("\nConsulta de Aluno:\n");
+
+		System.out.print("Informe o ID do Aluno: ");
+		Scanner scanner = new Scanner(System.in);
+		Integer id = Integer.parseInt(scanner.nextLine());
+
+		AlunoRepository alunoRepository = new AlunoRepository();
+		Aluno aluno = alunoRepository.findbyId(id);
+
+		if (aluno != null) {
+
+			System.out.println("\nID do Aluno: " + aluno.getIdAluno());
+			System.out.println("Nome: " + aluno.getNome());
+			System.out.println("Matrícula: " + aluno.getMatricula());
+			System.out.println("CPF: " + aluno.getCpf());
+		}
+		scanner.close();
+	}
+
 	public void consultarAlunos() throws Exception {
 
 		System.out.println("\nConsulta de Alunos:\n");
@@ -98,7 +119,7 @@ public class AlunoController {
 			System.out.println("Nome: " + aluno.getNome());
 			System.out.println("Matrícula: " + aluno.getMatricula());
 			System.out.println("CPF: " + aluno.getCpf());
-			System.out.println("...");
+			System.out.println("...\n");
 		}
 
 	}
