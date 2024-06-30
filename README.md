@@ -1,4 +1,4 @@
-# javaCrudJdbc
+# javaCrudAlunoJdbc
 
 Este é um projeto Java que realiza operações básicas de CRUD (Create, Read, Update, Delete) da entidade "Aluno" em um banco de dados PostgreSQL usando JDBC.
 
